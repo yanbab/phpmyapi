@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="lib/pure/pure.min.css">
+    <link rel="stylesheet" href="lib/ng-grid/ng-grid.min.css">
+    <link rel="stylesheet" href="app.css">
+    <style>
+    body {position:relative;}
+    body,html {
+        height:100%;
+        text-transform: ellipsis;
+    }
+    .pure-menu.pure-menu-open {
+        width:200px;
+        border:none;
+    }
+    .header {
+        position:absolute;
+        top:0;
+        height:1em;
+        left:201px;
+        right:0;
+    }
+    .gridStyle {
+        position:absolute;
+        top:2em;
+        left:201px;
+        right:0;
+        bottom:0;
+    }
+    .panel {
+        position:absolute;
+        top:0;
+        bottom:0;
+        overflow:hidden;
+        overflow-y: auto;
+        border-right: solid #dfdfdf 1px
+    }
+    .pure-menu  {
+         text-overflow : ellipsis; 
+    }
+    .pure-menu-selected {
+        background : #ddd;
+    }
+    select { outline:0;
+        font-weight: bold;
+        -webkit-appearance:none;
+        width:100%;
+        background:transparent;
+        border-radius: 0;       
+        border:none; 
+        text-transform: none;
+    }
+    ul {width:100%;}
+    </style>
+</head>
+<body  ng-controller="MyCtrl">
+
+<nav class="panel">
+    <div class="pure-menu pure-menu-open" >
+ 
+
+        <select class="pure-menu-heading" ng-model="base" ng-options="base for base in bases" ng-change="load_base(base)" >
+            <option value="" ng-bind="basesLabel" value="">Loading app...</option>
+        </select>
+    
+        <ul>
+            <li ng-repeat="table in tables" ng-click="load(table)" ng-class="{pure-menu-selected: table == selectedItems}"  ><a href="#"  ng-bind="table"></a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="header">
+    <div class="pure-menu pure-menu-open pure-menu-horizontal">
+    <ul >
+        <li ng-repeat="dir in path"><a href="#">{{dir}}</a></li>
+    </ul>
+    </div>
+</div>
+
+<div class="gridStyle" ng-grid="gridOptions">
+</div>
+
+<footer class="footer" ng-bind="selectedItems">
+</footer>
+
+<script src="lib/jquery/jquery-2.0.3.min.js"></script>
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/ng-grid/ng-grid-2.0.7.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
