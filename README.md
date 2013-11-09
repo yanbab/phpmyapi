@@ -3,7 +3,7 @@ phpmyapi
 
 phpMyAPI is a micro-framework to easyly create REST API.
 
-* Usage *
+**Usage**
 
 	<?php
 	require("lib/api.php");
