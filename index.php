@@ -5,8 +5,6 @@
 // Sample usage
 //
 
-
-
 include('lib/api.php');
 include('lib/api.db.php');
 
@@ -18,21 +16,14 @@ db::$options['pass'] = 'admin';
 // Example of a custom API
 // (try /hello, /hello/mars, /hello/say, /hello/say/goodbye)
 
-class hello {
+class sample_api {
 
-    // GET /hello
-    // RESPONSE hello !
-
-    function get_index($w = 'world') {
-        return "hello  $w ! :)";
+    function get_index($arg1) {
+        return "You called GET /sample_api/$arg1";
     }
 
-    // GET /hello/say
-    //     RESPONSE "hello world !"
-    // GET /hello/say/goodbye
-    //     RESPONSE "hello goodbye !"
-    function get_say($word = "world") {
-        return "hello $word !";
+    function post_client() {
+        return "You called POST /sample_api/client/";
     }
 
 }
