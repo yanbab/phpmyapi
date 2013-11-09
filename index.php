@@ -1,8 +1,21 @@
 <?php
+//
+// phpMyAPI
+//
+// Sample usage
+//
 
-include('api.php');
 
-// Example of a custom API, you can delete this class :
+
+include('lib/api.php');
+include('lib/api.db.php');
+
+// Specify options for api.db
+db::$options['host'] = 'localhost';
+db::$options['user'] = 'root';
+db::$options['pass'] = 'admin';
+
+// Example of a custom API
 // (try /hello, /hello/mars, /hello/say, /hello/say/goodbye)
 
 class hello {

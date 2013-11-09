@@ -3,7 +3,7 @@ var app = angular.module('myApp', ['ngGrid']);
 
 app.controller('MyCtrl', function($scope, $http) {
 
-
+    $scope.server = "../";
     $scope.records = [];
     $scope.selectedItems = [];
     $scope.tables = [];
@@ -28,7 +28,7 @@ app.controller('MyCtrl', function($scope, $http) {
         $scope.basesLabel = "Loading table...";
       
         $scope.base = base;
-        $http.get('../server/' + base).success( function(data) {
+        $http.get($scope.server + base).success( function(data) {
             
             $scope.tables = data;
         });
@@ -42,7 +42,7 @@ app.controller('MyCtrl', function($scope, $http) {
         if(!table) { 
             return;
         }
-	    $http.get('../server/' + $scope.base + '/' + table).success( function(data) {
+	    $http.get($scope.server + $scope.base + '/' + table).success( function(data) {
 	    	$scope.columnDefs = [];
             // Change colums
 			for(var k in data[0]) {
@@ -53,7 +53,7 @@ app.controller('MyCtrl', function($scope, $http) {
     	});
 	}
 
-    $http.get('../server/').success( function(data) {
+    $http.get($scope.server).success( function(data) {
     	
         $scope.bases = data;
         $scope.basesLabel = "Tables ▾";
