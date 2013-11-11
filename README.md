@@ -1,7 +1,7 @@
 phpmyapi
 ========
 
-phpMyAPI is a micro-framework to easyly create REST API.
+phpMyAPI is a micro-framework to easily create REST API.
 
 **Usage**
 
@@ -15,8 +15,14 @@ phpMyAPI is a micro-framework to easyly create REST API.
 	    }
 
 	    function post_client() {
-	        return "You called POST /sample_api/client/";
-	    }
+	    		if(!isset($_POST['name'])) {
+	    			api::error(
+	    				"Error : you must specify a client name"
+	    			);
+	    		} else {
+	        	return "You called POST /sample_api/client/";
+	    		}
+	    }	
 
 	}
 

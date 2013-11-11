@@ -28,4 +28,5 @@ class sample_api {
 
 }
 
-api::run();
+api::run('db');
+
