@@ -105,6 +105,7 @@ class api {
         if(!$success) {
             header("HTTP/1.0 400 Bad Request");
             echo json_encode($data); 
+
         } else { 
             header('Content-Type: application/json');
             echo json_encode($data); 
@@ -113,6 +114,7 @@ class api {
 
     public static function error($data) {
         self::response($data, false);
+        
     }
 
     public function input() {
